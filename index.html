@@ -1,7 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body class="mx-auto max-w-6xl">
+    <div class=" p-8 flex flex-col items-center">
+        <p class="text-3xl font-bold">
+            cholasimmons
+        </p>
+
+        <hr class="my-2">
+
+        <p class="text-slate-500">Projects:</p>
+    </div>
+
+    <section class="projects grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 p-8 gap-4"></section>
+
+    <div class="absolute bottom-0 left-0 p-2 w-full">
+        <p class="mx-auto text-center" title="Made in Zambia">❤️</p>
+    </div>
+  
 </body>
 </html>
+
+<script lang="ts">
+    const mediaPath = '/dist/media/images/';
+    const defaultImageUrl = 'defaultCover.webp';
+
+    const projects = [
+        { name: 'Furr Buddies', website: 'https://buddies.simmons.studio', repository: 'https://github.com/cholasimmons/FurrBuddies', image: 'furrbuddies.jpg', frameworks: ['Sveltekit','Appwrite','SkeletonUI'] },
+        { name: 'Felopater', website: 'https://felopater.co.zm', repository: 'https://github.com/cholasimmons/Felopater', image: 'felopater.png', frameworks: ['HTML5','TailwindCSS'] },
+        { name: 'Zangi Wine Stop', website: 'https://zangi.simmons.studio', repository: 'https://github.com/cholasimmons/ZangiWineStop', image: 'zangi.png', frameworks: ['HTML5','TailwindCSS','CouchCMS'] }
+    ];
+
+    const container = document.getElementsByClassName("projects");
+
+    for (var i = 0; i < projects.length; i++) {
+        var item = projects[i];
+
+        // Strip "https://" from url to create website name
+        var webname = item.website.replace("https://", "");
+
+        // Create elements
+        var mainDiv = document.createElement("div");
+        var mainAnchor = document.createElement("a");
+        var image = document.createElement("img");
+        var secondaryDiv = document.createElement("div");
+        var nameDiv = document.createElement("p");
+        var webAnchor = document.createElement("a");
+        var webDiv = document.createElement("small");
+
+        // setup image
+        image.src = mediaPath + ( item.image ? item.image : defaultImageUrl );
+        image.alt = item.name;
+
+        //  setup divs
+        nameDiv.textContent = item.name;
+        webDiv.textContent = item.frameworks.filter(framework => framework + ', ');
+
+        // setup anchors
+        mainAnchor.href = item.website;
+        mainAnchor.target = item.name;
+        webAnchor.href = item.repository;
+        webAnchor.target = 'github'+item.name;
+
+        mainDiv.appendChild(mainAnchor);
+        mainAnchor.appendChild(image);
+        mainAnchor.appendChild(secondaryDiv);
+        secondaryDiv.appendChild(nameDiv);
+        secondaryDiv.appendChild(webAnchor);
+        webAnchor.appendChild(webDiv);
+
+        container[0].appendChild(mainDiv);
+    }
+</script>
