@@ -643,7 +643,7 @@ video {
 @font-face{
   font-family: "Arima";
 
-  src: url("/media/fonts/Arima/static/Arima-Regular.ttf") format("truetype");
+  src: url("./media/fonts/Arima/static/Arima-Regular.ttf") format("truetype");
 
   weight: 400;
 
@@ -653,7 +653,7 @@ video {
 @font-face{
   font-family: "Arima";
 
-  src: url("/media/fonts/Arima/static/Arima-Medium.ttf") format("truetype");
+  src: url("./media/fonts/Arima/static/Arima-Medium.ttf") format("truetype");
 
   weight: 500;
 
@@ -662,7 +662,7 @@ video {
 
 body {
   background-color: #dfdfef;
-  background-image: url('/media/images/bg.webp');
+  background-image: url('./media/images/bg.webp');
   font-family: "Arima";
 }
 
